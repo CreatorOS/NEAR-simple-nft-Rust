@@ -68,4 +68,16 @@ mod tests {
         let owner_of_nft = contract.get_owner(my_token);
         assert_eq!(owner_of_nft, owner_account_id);
     }
+
+    #[test]
+    fn wrong_owner() {
+        let context = get_context("hdsaleh.testnet".to_string(), 0);
+        testing_env!(context);
+        let mut contract = NftOwners::default();
+        let my_token = "my_token".to_string();
+        let owner_account_id = "hdsaleh.testnet".to_string();
+        contract.set_owner(my_token.clone(), owner_account_id.clone());
+        let owner_of_nft = contract.get_owner("not_my_token".to_string());
+        assert_eq!(owner_of_nft, "No owner found".to_string());
+    }
 }
