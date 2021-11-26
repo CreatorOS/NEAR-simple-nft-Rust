@@ -57,7 +57,7 @@ We also need a getter function, let's write it then!
 
 ## Writing functions - getter 
 So this getter takes in a token ID and returns an account id. It matches the value associated with this key (token_id in the code). If found, then it returns it (owner in the code). Otherwise, returns an error message.
-STEP 1: Pass the proper key to ```ts get()```. Remember, include the "&" before passing the argument. 
+STEP 1: Pass the proper key to ```get()```. Remember, include the "&" before passing the argument. 
 ```ts
  pub fn get_owner(&self, token_id: String) -> AccountId {
         match self.owners.get(/*STEP 1*/) {
